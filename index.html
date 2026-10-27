@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ピル管理">
+  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/1024px-Apple_logo_grey.svg.png"> <!-- ダミーアイコン -->
+  <title>ピルリマインダー</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      /* スクロール防止 */
+      overflow: hidden;
+      touch-action: none;
+    }
+    h1 { margin-bottom: 5px; color: #333; font-size: 1.8rem; }
+    #date-display { font-size: 1.1rem; margin-bottom: 30px; color: #666; }
+    #status-text { font-size: 1.6rem; font-weight: bold; margin-bottom: 30px; }
+    
+    /* 大きくて押しやすいボタン */
+    #action-btn {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: white;
+      border: none;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #action-btn:active {
+      transform: scale(0.95);
+    }
+    
+    /* 未服用（赤）と 服用済み（緑）の色 */
+    .not-taken { 
+      background: linear-gradient(135deg, #ff6b6b, #ff4d4d); 
+    }
+    .taken { 
+      background: linear-gradient(135deg, #69db7c, #4cd964); 
+    }
+    
+    /* 間違えた時の取り消しボタン */
+    #cancel-btn {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      color: #888;
+      background: #e5e5ea;
+      border-radius: 20px;
+      border: none;
+      font-weight: bold;
+      display: none; /* 最初は隠しておく */
+    }
+    #cancel-btn:active {
+      background: #d1d1d6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ピルリマインダー</h1>
+  <div id="date-display"></div>
+  <div id="status-text">未服用です🔴</div>
+  
+  <button id="action-btn" class="not-taken">飲んだ！</button>
+  <button id="cancel-btn">間違えて押した（取消）</button>
+
+  <script>
+    // 今日の日付を取得して表示
+    const today = new Date();
+    const dateString = today.getFullYear() + '年' + (today.getMonth() + 1) + '月' + today.getDate() + '日';
+    document.getElementById('date-display').innerText = dateString;
+
+    const actionBtn = document.getElementById('action-btn');
+    const statusText = document.getElementById('status-text');
+    const cancelBtn = document.getElementById('cancel-btn');
+
+    // スマホの中に保存されている記録を読み込む
+    const savedDate = localStorage.getItem('lastTakenDate');
+
+    // 今日すでに飲んでいるかチェックして画面を更新する関数
+    function updateUI() {
+      // 読み込んだ記録が今日の日付と同じかどうか判定
+      if (localStorage.getItem('lastTakenDate') === dateString) {
+        // 今日飲んでいる場合（緑）
+        statusText.innerText = "服用済みです🟢";
+        actionBtn.innerText = "完了";
+        actionBtn.className = "taken";
+        actionBtn.disabled = true; // ボタンを押せなくする
+        cancelBtn.style.display = "block"; // 取り消しボタンを表示
+      } else {
+        // まだ飲んでいない場合（赤）
+        statusText.innerText = "未服用です🔴";
+        actionBtn.innerText = "飲んだ！";
+        actionBtn.className = "not-taken";
+        actionBtn.disabled = false;
+        cancelBtn.style.display = "none";
+      }
+    }
+
+    // 「飲んだ！」ボタンを押した時の処理
+    actionBtn.addEventListener('click', () => {
+      localStorage.setItem('lastTakenDate', dateString); // 今日の日付を保存
+      updateUI(); // 画面を更新
+    });
+
+    // 「取り消し」ボタンを押した時の処理
+    cancelBtn.addEventListener('click', () => {
+      localStorage.removeItem('lastTakenDate'); // 記録を消す
+      updateUI(); // 画面を更新
+    });
+
+    // 最初に画面を開いた時にUIを更新
+    updateUI();
+  </script>
+</body>
+</html>
