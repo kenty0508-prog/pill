@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="ピル管理">
-  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/1024px-Apple_logo_grey.svg.png"> <!-- ダミーアイコン -->
+  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/1024px-Apple_logo_grey.svg.png">
   <title>ピルリマインダー</title>
   <style>
     body {
@@ -14,60 +14,114 @@
       text-align: center;
       background-color: #f4f4f9;
       margin: 0;
-      padding: 0;
+      padding: 40px 20px 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      /* スクロール防止 */
-      overflow: hidden;
-      touch-action: none;
+      min-height: 100vh;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
-    h1 { margin-bottom: 5px; color: #333; font-size: 1.8rem; }
-    #date-display { font-size: 1.1rem; margin-bottom: 30px; color: #666; }
-    #status-text { font-size: 1.6rem; font-weight: bold; margin-bottom: 30px; }
     
-    /* 大きくて押しやすいボタン */
+    /* ヘッダー周り */
+    h1 { margin: 0 0 5px 0; color: #333; font-size: 1.6rem; }
+    #date-display { font-size: 1rem; margin-bottom: 25px; color: #666; }
+    #status-text { font-size: 1.4rem; font-weight: bold; margin-bottom: 25px; }
+    
+    /* メインボタン */
     #action-btn {
-      width: 240px;
-      height: 240px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: bold;
       color: white;
       border: none;
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
       cursor: pointer;
       transition: all 0.2s ease-in-out;
-      -webkit-tap-highlight-color: transparent;
+      margin-bottom: 20px;
     }
-    #action-btn:active {
-      transform: scale(0.95);
-    }
+    #action-btn:active { transform: scale(0.95); }
+    .not-taken { background: linear-gradient(135deg, #ff6b6b, #ff4d4d); }
+    .taken { background: linear-gradient(135deg, #69db7c, #4cd964); }
     
-    /* 未服用（赤）と 服用済み（緑）の色 */
-    .not-taken { 
-      background: linear-gradient(135deg, #ff6b6b, #ff4d4d); 
-    }
-    .taken { 
-      background: linear-gradient(135deg, #69db7c, #4cd964); 
-    }
-    
-    /* 間違えた時の取り消しボタン */
+    /* 取消ボタン */
     #cancel-btn {
-      margin-top: 40px;
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      color: #888;
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #777;
       background: #e5e5ea;
       border-radius: 20px;
       border: none;
       font-weight: bold;
-      display: none; /* 最初は隠しておく */
+      display: none;
+      margin-bottom: 30px;
     }
-    #cancel-btn:active {
-      background: #d1d1d6;
+    #cancel-btn:active { background: #d1d1d6; }
+
+    /* カレンダーUI */
+    #calendar-container {
+      width: 100%;
+      max-width: 350px;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-top: 20px;
+      box-sizing: border-box;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .calendar-header button {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #007aff;
+      font-weight: bold;
+      padding: 5px 15px;
+    }
+    #calendar-month {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #333;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    .day-name {
+      font-size: 0.8rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .calendar-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1rem;
+      color: #333;
+    }
+    .calendar-day.empty { background: transparent; }
+    
+    /* カレンダーの装飾 */
+    .calendar-day.today {
+      border: 2px solid #ccc;
+      font-weight: bold;
+    }
+    .calendar-day.taken {
+      background: linear-gradient(135deg, #69db7c, #4cd964);
+      color: white;
+      font-weight: bold;
+      border: none;
     }
   </style>
 </head>
@@ -80,31 +134,55 @@
   <button id="action-btn" class="not-taken">飲んだ！</button>
   <button id="cancel-btn">間違えて押した（取消）</button>
 
-  <script>
-    // 今日の日付を取得して表示
-    const today = new Date();
-    const dateString = today.getFullYear() + '年' + (today.getMonth() + 1) + '月' + today.getDate() + '日';
-    document.getElementById('date-display').innerText = dateString;
+  <!-- カレンダー部分 -->
+  <div id="calendar-container">
+    <div class="calendar-header">
+      <button id="prev-month">&lt;</button>
+      <div id="calendar-month">2026年 10月</div>
+      <button id="next-month">&gt;</button>
+    </div>
+    <div class="calendar-grid" id="calendar-grid">
+      <!-- ここにカレンダーが生成されます -->
+    </div>
+  </div>
 
+  <script>
+    // === データ管理 ===
+    // 過去の服用履歴を配列として読み込む（無ければ空配列）
+    let takenDates = JSON.parse(localStorage.getItem('pillTakenDates')) || [];
+
+    // === 日付関連の関数 ===
+    // 日付オブジェクトから "YYYY-MM-DD" の文字列を作る
+    function formatDateString(dateObj) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    const todayObj = new Date();
+    const todayStr = formatDateString(todayObj);
+
+    // 画面上部の日付表示
+    document.getElementById('date-display').innerText = `${todayObj.getFullYear()}年${todayObj.getMonth() + 1}月${todayObj.getDate()}日`;
+
+    // カレンダー表示用の変数
+    let currentDisplayDate = new Date(todayObj.getFullYear(), todayObj.getMonth(), 1);
+
+    // === UI更新関数 ===
     const actionBtn = document.getElementById('action-btn');
     const statusText = document.getElementById('status-text');
     const cancelBtn = document.getElementById('cancel-btn');
 
-    // スマホの中に保存されている記録を読み込む
-    const savedDate = localStorage.getItem('lastTakenDate');
-
-    // 今日すでに飲んでいるかチェックして画面を更新する関数
-    function updateUI() {
-      // 読み込んだ記録が今日の日付と同じかどうか判定
-      if (localStorage.getItem('lastTakenDate') === dateString) {
-        // 今日飲んでいる場合（緑）
+    function updateTopUI() {
+      // 今日が「飲んだ日リスト」に含まれているかチェック
+      if (takenDates.includes(todayStr)) {
         statusText.innerText = "服用済みです🟢";
         actionBtn.innerText = "完了";
         actionBtn.className = "taken";
-        actionBtn.disabled = true; // ボタンを押せなくする
-        cancelBtn.style.display = "block"; // 取り消しボタンを表示
+        actionBtn.disabled = true;
+        cancelBtn.style.display = "block";
       } else {
-        // まだ飲んでいない場合（赤）
         statusText.innerText = "未服用です🔴";
         actionBtn.innerText = "飲んだ！";
         actionBtn.className = "not-taken";
@@ -113,20 +191,93 @@
       }
     }
 
-    // 「飲んだ！」ボタンを押した時の処理
+    // === カレンダー描画関数 ===
+    function renderCalendar() {
+      const year = currentDisplayDate.getFullYear();
+      const month = currentDisplayDate.getMonth();
+      
+      // 月の表示を更新
+      document.getElementById('calendar-month').innerText = `${year}年 ${month + 1}月`;
+      
+      const grid = document.getElementById('calendar-grid');
+      grid.innerHTML = '';
+      
+      // 曜日のヘッダーを追加
+      const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
+      dayNames.forEach(day => {
+        const el = document.createElement('div');
+        el.className = 'day-name';
+        el.innerText = day;
+        grid.appendChild(el);
+      });
+
+      // 月の最初の日の曜日 (0:日, 1:月...) と月の最終日を取得
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // 1日の前の空白を埋める
+      for (let i = 0; i < firstDay; i++) {
+        const el = document.createElement('div');
+        el.className = 'calendar-day empty';
+        grid.appendChild(el);
+      }
+
+      // 日付を描画
+      for (let i = 1; i <= daysInMonth; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-day';
+        cell.innerText = i;
+
+        // このマスの日付文字列を作成
+        const cellDateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+
+        // 今日なら枠線をつける
+        if (cellDateStr === todayStr) {
+          cell.classList.add('today');
+        }
+
+        // 飲んだ日リストに入っていれば緑色にする
+        if (takenDates.includes(cellDateStr)) {
+          cell.classList.add('taken');
+        }
+
+        grid.appendChild(cell);
+      }
+    }
+
+    // === ボタンのイベント設定 ===
+    // 「飲んだ！」ボタン
     actionBtn.addEventListener('click', () => {
-      localStorage.setItem('lastTakenDate', dateString); // 今日の日付を保存
-      updateUI(); // 画面を更新
+      if (!takenDates.includes(todayStr)) {
+        takenDates.push(todayStr); // リストに追加
+        localStorage.setItem('pillTakenDates', JSON.stringify(takenDates)); // 保存
+        updateTopUI();
+        renderCalendar();
+      }
     });
 
-    // 「取り消し」ボタンを押した時の処理
+    // 「取消」ボタン
     cancelBtn.addEventListener('click', () => {
-      localStorage.removeItem('lastTakenDate'); // 記録を消す
-      updateUI(); // 画面を更新
+      // リストから今日の日付を取り除く
+      takenDates = takenDates.filter(date => date !== todayStr);
+      localStorage.setItem('pillTakenDates', JSON.stringify(takenDates)); // 保存
+      updateTopUI();
+      renderCalendar();
     });
 
-    // 最初に画面を開いた時にUIを更新
-    updateUI();
+    // カレンダーの月切り替えボタン
+    document.getElementById('prev-month').addEventListener('click', () => {
+      currentDisplayDate.setMonth(currentDisplayDate.getMonth() - 1);
+      renderCalendar();
+    });
+    document.getElementById('next-month').addEventListener('click', () => {
+      currentDisplayDate.setMonth(currentDisplayDate.getMonth() + 1);
+      renderCalendar();
+    });
+
+    // === 初期化 ===
+    updateTopUI();
+    renderCalendar();
   </script>
 </body>
 </html>
