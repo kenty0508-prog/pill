@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ピル管理">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#fff6f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1518" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <title>ピル管理</title>
+  <style>
+    :root {
+      --bg: #fff6f8;
+      --card: #ffffff;
+      --ink: #4a3a3f;
+      --sub: #8f7d84;
+      --faint: #c4b3b9;
+      --line: #f3e1e8;
+      --primary: #e25f95;
+      --primary-2: #f4a3c1;
+      --primary-soft: #ffe9f1;
+      --ok: #2fae80;
+      --ok-2: #7fd8b5;
+      --ok-soft: #dcf4ea;
+      --brk: #8a74e0;
+      --brk-soft: #eeeaff;
+      --bleed: #e0414f;
+      --spot: #f08aa5;
+      --warn: #a96500;
+      --warn-soft: #fff2d4;
+      --danger: #cf3249;
+      --danger-soft: #ffe5e9;
+      --shadow: 0 6px 22px rgba(226, 95, 149, .10);
+      --radius: 22px;
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1518;
+        --card: #2a2025;
+        --ink: #f5eaee;
+        --sub: #b8a3ac;
+        --faint: #6f5d65;
+        --line: #3b2d34;
+        --primary: #ff86b5;
+        --primary-2: #c45d88;
+        --primary-soft: #3c2430;
+        --ok: #4fd3a2;
+        --ok-2: #2a9a73;
+        --ok-soft: #1d3a2f;
+        --brk: #ad9dff;
+        --brk-soft: #2d2746;
+        --bleed: #ff6b78;
+        --spot: #e38aa2;
+        --warn: #ffc65e;
+        --warn-soft: #3a2f17;
+        --danger: #ff7085;
+        --danger-soft: #3f1f27;
+        --shadow: 0 4px 18px rgba(0, 0, 0, .35);
+        color-scheme: dark;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Hiragino Maru Gothic ProN", "ヒラギノ丸ゴ ProN", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.locked { overflow: hidden; }
+    button { font: inherit; color: inherit; touch-action: manipulation; cursor: pointer; }
+    button:focus-visible, input:focus-visible { outline: 3px solid var(--primary-2); outline-offset: 2px; }
+    input { font: inherit; color: inherit; }
+
+    .app {
+      max-width: 440px;
+      margin: 0 auto;
+      padding: calc(env(safe-area-inset-top) + 14px) calc(env(safe-area-inset-right) + 16px) calc(env(safe-area-inset-bottom) + 28px) calc(env(safe-area-inset-left) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ヘッダー */
+    .top { display: flex; align-items: center; justify-content: space-between; padding: 4px 4px 0; }
+    .eyebrow { font-size: .8rem; color: var(--sub); font-weight: 700; letter-spacing: .04em; }
+    .top h1 { margin: 0; font-size: 1.55rem; color: var(--ink); letter-spacing: .02em; }
+    .icon-btn {
+      width: 44px; height: 44px; border-radius: 14px; border: none;
+      background: var(--card); color: var(--sub); box-shadow: var(--shadow);
+      display: grid; place-items: center;
+    }
+    .icon-btn svg { width: 22px; height: 22px; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+
+    /* 状態カード */
+    .status { position: relative; overflow: hidden; }
+    .st-label { font-size: .85rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+    .st-label .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .status.is-break .st-label { color: var(--brk); }
+    .st-big { display: flex; align-items: baseline; gap: 6px; margin: 2px 0 10px; }
+    .st-big .num { font-size: 3.2rem; font-weight: 800; line-height: 1.05; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .st-big .unit { font-size: 1.05rem; font-weight: 700; color: var(--sub); }
+    .bar { position: relative; height: 10px; border-radius: 99px; background: var(--primary-soft); margin-top: 18px; }
+    .bar .fill { position: absolute; inset: 0 auto 0 0; border-radius: 99px; background: linear-gradient(90deg, var(--primary-2), var(--primary)); transition: width .4s ease; }
+    .bar .fill.warn { background: linear-gradient(90deg, #f5c063, #e9a020); }
+    .bar .fill.danger { background: var(--danger); }
+    .bar .tick { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--card); border-radius: 2px; }
+    .bar .tick span { position: absolute; bottom: calc(100% + 1px); left: 50%; transform: translateX(-50%); font-size: .68rem; font-weight: 700; color: var(--sub); white-space: nowrap; }
+    .bar-labels { display: flex; justify-content: space-between; font-size: .75rem; color: var(--sub); font-weight: 700; margin-top: 6px; }
+    .st-meta { margin-top: 10px; font-size: .88rem; color: var(--sub); font-weight: 700; }
+    .st-meta b { color: var(--ink); }
+    .segs4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 14px; }
+    .segs4 i { height: 10px; border-radius: 99px; background: var(--brk-soft); }
+    .segs4 i.on { background: var(--brk); }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;
+      padding: 6px 12px; border-radius: 99px; background: var(--brk-soft); color: var(--brk);
+      font-size: .82rem; font-weight: 700;
+    }
+    .link-btn { background: none; border: none; padding: 6px 2px; color: var(--sub); font-size: .85rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .welcome h2 { margin: 0 0 6px; font-size: 1.2rem; }
+    .welcome p { margin: 0 0 14px; color: var(--sub); font-size: .92rem; }
+
+    /* お知らせ */
+    .notices { display: flex; flex-direction: column; gap: 10px; }
+    .notices:empty { display: none; }
+    .notice { border-radius: 18px; padding: 14px 16px; font-size: .9rem; background: var(--primary-soft); border: 1px solid transparent; }
+    .notice .n-title { font-weight: 800; margin-bottom: 2px; }
+    .notice .n-body { color: var(--ink); opacity: .85; }
+    .notice .n-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .notice.danger { background: var(--danger-soft); }
+    .notice.danger .n-title { color: var(--danger); }
+    .notice.warn { background: var(--warn-soft); }
+    .notice.warn .n-title { color: var(--warn); }
+    .notice.info { background: var(--card); border-color: var(--line); }
+    .notice.brk { background: var(--brk-soft); }
+    .notice.brk .n-title { color: var(--brk); }
+
+    /* ボタン */
+    .btn {
+      border: none; border-radius: 14px; padding: 12px 16px; font-weight: 800; font-size: .95rem;
+      background: var(--primary-soft); color: var(--primary); min-height: 44px;
+    }
+    .btn.sm { padding: 8px 14px; min-height: 38px; font-size: .88rem; border-radius: 12px; }
+    .btn.primary { background: var(--primary); color: #fff; }
+    .btn.ghost { background: transparent; color: var(--sub); box-shadow: inset 0 0 0 1.5px var(--line); }
+    .btn.danger { background: var(--danger-soft); color: var(--danger); }
+    .btn.danger-solid { background: var(--danger); color: #fff; }
+    .btn.brk { background: var(--brk); color: #fff; }
+    .btn.block { width: 100%; }
+    .btn:active { transform: scale(.98); }
+    .btn[disabled] { opacity: .45; }
+
+    /* メインボタン */
+    .action { display: flex; justify-content: center; padding: 10px 0 6px; }
+    .main-btn {
+      position: relative; width: 188px; height: 188px; border-radius: 50%; border: none;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+      color: #fff; background: linear-gradient(145deg, var(--primary-2), var(--primary));
+      box-shadow: 0 14px 30px rgba(226, 95, 149, .35), inset 0 -6px 14px rgba(0,0,0,.06);
+      transition: transform .18s cubic-bezier(.2,.9,.3,1.3), box-shadow .2s;
+    }
+    .main-btn:active { transform: scale(.93); }
+    .main-btn svg { width: 38px; height: 38px; margin-bottom: 2px; }
+    .main-btn .mb-label { font-size: 1.9rem; font-weight: 800; letter-spacing: .06em; line-height: 1.15; }
+    .main-btn .mb-sub { font-size: .82rem; font-weight: 700; opacity: .92; min-height: 1.2em; }
+    .main-btn.taken { background: linear-gradient(145deg, var(--ok-2), var(--ok)); box-shadow: 0 14px 30px rgba(47, 174, 128, .30); }
+    .main-btn.taken .mb-label { font-size: 1.55rem; }
+    .main-btn.break { background: var(--brk-soft); color: var(--brk); box-shadow: none; }
+    .main-btn.break .mb-label { font-size: 1.55rem; }
+    .main-btn.due::after {
+      content: ""; position: absolute; inset: -8px; border-radius: 50%;
+      border: 3px solid var(--primary-2); animation: pulse 1.8s ease-out infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(.95); opacity: .9; } 100% { transform: scale(1.12); opacity: 0; } }
+
+    /* 出血 */
+    .row-title { font-weight: 800; font-size: .95rem; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: baseline; }
+    .row-title small { font-weight: 700; color: var(--sub); font-size: .78rem; }
+    .seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; background: var(--bg); padding: 4px; border-radius: 14px; }
+    .seg button {
+      border: none; background: transparent; border-radius: 11px; padding: 10px 4px; min-height: 42px;
+      font-weight: 800; font-size: .9rem; color: var(--sub);
+    }
+    .seg button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .seg button[aria-pressed="true"][data-tone="spot"] { color: var(--spot); }
+    .seg button[aria-pressed="true"][data-tone="bleed"] { color: var(--bleed); }
+    .hint { margin: 10px 2px 0; font-size: .82rem; color: var(--sub); }
+    .hint:empty { display: none; }
+
+    /* カレンダー */
+    .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .cal-head .m { font-weight: 800; font-size: 1.1rem; }
+    .cal-nav { display: flex; gap: 6px; align-items: center; }
+    .nav-btn { width: 38px; height: 38px; border-radius: 12px; border: none; background: var(--primary-soft); color: var(--primary); font-weight: 800; display: grid; place-items: center; }
+    .nav-btn svg { width: 18px; height: 18px; }
+    .today-btn { border: none; background: none; color: var(--primary); font-weight: 800; font-size: .85rem; padding: 8px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px 2px; }
+    .wd { text-align: center; font-size: .75rem; font-weight: 800; color: var(--sub); padding-bottom: 4px; }
+    .wd.sun { color: var(--danger); }
+    .wd.sat { color: #4f7fd8; }
+    .day {
+      position: relative; aspect-ratio: 1; border: none; background: none; padding: 0;
+      display: grid; place-items: center; font-weight: 800; font-size: .92rem; font-variant-numeric: tabular-nums;
+    }
+    .day .c {
+      width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+      transition: transform .12s;
+    }
+    .day:active .c { transform: scale(.9); }
+    .day.future { color: var(--faint); cursor: default; }
+    .day.brk .c { background: var(--brk-soft); color: var(--brk); }
+    .day.taken .c { background: var(--ok); color: #fff; }
+    .day.missed .c { box-shadow: inset 0 0 0 2px var(--danger); color: var(--danger); }
+    .day.today .c { box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--primary); }
+    .day.today.missed .c, .day.today:not(.taken) .c { color: var(--primary); }
+    .day.today.taken .c { color: #fff; }
+    .day.start::before {
+      content: ""; position: absolute; top: 3px; right: 4px; width: 7px; height: 7px; border-radius: 50%; background: var(--primary);
+    }
+    .day .drop { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 7px; height: 7px; border-radius: 50% 50% 50% 0; rotate: -45deg; }
+    .day .drop.b1 { background: var(--spot); }
+    .day .drop.b2 { background: var(--bleed); }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: center; margin-top: 14px; font-size: .76rem; color: var(--sub); font-weight: 700; }
+    .legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .lg { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .lg.ok { background: var(--ok); }
+    .lg.miss { box-shadow: inset 0 0 0 2px var(--danger); }
+    .lg.brk { background: var(--brk-soft); box-shadow: inset 0 0 0 1px var(--brk); }
+    .lg.drop { border-radius: 50% 50% 50% 0; rotate: -45deg; width: 9px; height: 9px; background: var(--bleed); }
+    .lg.start { width: 8px; height: 8px; background: var(--primary); }
+
+    /* 統計 */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat { background: var(--bg); border-radius: 16px; padding: 12px 8px; text-align: center; }
+    .stat b { display: block; font-size: 1.3rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .stat span { font-size: .72rem; color: var(--sub); font-weight: 700; }
+    .sec-title { font-size: .95rem; font-weight: 800; margin: 18px 0 8px; }
+    .hist { list-style: none; margin: 0; padding: 0; }
+    .hist li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 2px; border-top: 1px solid var(--line); font-size: .9rem; }
+    .hist li:first-child { border-top: none; }
+    .hist .range { font-weight: 700; }
+    .hist .range small { display: block; color: var(--sub); font-size: .75rem; }
+    .hist .len { font-weight: 800; white-space: nowrap; text-align: right; }
+    .tag { display: inline-block; font-size: .7rem; padding: 2px 8px; border-radius: 99px; background: var(--primary-soft); color: var(--primary); font-weight: 800; margin-top: 2px; }
+    .tag.bleed { background: var(--danger-soft); color: var(--danger); }
+    .tag.max { background: var(--warn-soft); color: var(--warn); }
+    .tag.now { background: var(--ok-soft); color: var(--ok); }
+    .empty { color: var(--sub); font-size: .88rem; padding: 6px 2px; }
+
+    .foot { text-align: center; color: var(--sub); font-size: .75rem; padding: 6px 12px 0; line-height: 1.6; }
+
+    /* ボトムシート */
+    .backdrop { position: fixed; inset: 0; background: rgba(40, 20, 30, .42); opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 50; }
+    .backdrop.show { opacity: 1; pointer-events: auto; }
+    .sheet {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 51; margin: 0 auto; max-width: 480px;
+      background: var(--card); border-radius: 26px 26px 0 0;
+      padding: 8px calc(env(safe-area-inset-right) + 20px) calc(env(safe-area-inset-bottom) + 20px) calc(env(safe-area-inset-left) + 20px);
+      max-height: 88vh; max-height: 88dvh; overflow-y: auto; overscroll-behavior: contain;
+      transform: translateY(105%); visibility: hidden; transition: transform .3s cubic-bezier(.2,.8,.2,1), visibility 0s linear .3s;
+      box-shadow: 0 -10px 40px rgba(0,0,0,.15);
+    }
+    .sheet.show { transform: translateY(0); visibility: visible; transition: transform .3s cubic-bezier(.2,.8,.2,1), visibility 0s; }
+    .grip { width: 40px; height: 5px; border-radius: 99px; background: var(--line); margin: 4px auto 14px; }
+    .sheet h2 { margin: 0; font-size: 1.25rem; }
+    .sheet .sub { margin: 2px 0 0; color: var(--sub); font-size: .88rem; font-weight: 700; }
+    .sheet p.txt { font-size: .92rem; margin: 10px 0 0; }
+    .field { margin-top: 18px; }
+    .field-label { font-size: .82rem; font-weight: 800; color: var(--sub); margin-bottom: 8px; }
+    .field-row { display: flex; gap: 10px; align-items: center; }
+    .input {
+      flex: 1; min-width: 0; font-size: 1.1rem; font-weight: 800; padding: 10px 14px; min-height: 48px;
+      border-radius: 14px; border: 2px solid var(--line); background: var(--bg); text-align: center;
+      -webkit-appearance: none; appearance: none;
+    }
+    .input:focus { border-color: var(--primary-2); outline: none; }
+    .stepper { display: flex; align-items: center; gap: 10px; }
+    .stepper .nav-btn { width: 48px; height: 48px; font-size: 1.4rem; border-radius: 14px; }
+    .stepper .input { max-width: 110px; font-size: 1.5rem; }
+    .stepper .u { font-weight: 800; color: var(--sub); }
+    .sheet-actions { display: grid; gap: 10px; margin-top: 22px; }
+    .choice { display: grid; gap: 8px; }
+    .choice button {
+      text-align: left; border: 2px solid var(--line); background: var(--card); border-radius: 16px; padding: 12px 14px;
+    }
+    .choice button b { display: block; font-size: 1rem; }
+    .choice button span { font-size: .82rem; color: var(--sub); font-weight: 700; }
+    .choice button[aria-pressed="true"] { border-color: var(--brk); background: var(--brk-soft); }
+    .list { display: grid; gap: 8px; }
+    .list .btn { text-align: left; display: flex; justify-content: space-between; align-items: center; background: var(--bg); color: var(--ink); }
+    .list .btn small { color: var(--sub); font-weight: 700; }
+    .note { font-size: .8rem; color: var(--sub); margin: 8px 2px 0; line-height: 1.6; }
+    hr.sep { border: none; border-top: 1px solid var(--line); margin: 20px 0 0; }
+
+    /* トースト */
+    .toast {
+      position: fixed; left: 50%; top: calc(env(safe-area-inset-top) + 12px); z-index: 60;
+      width: max-content; transform: translate(-50%, calc(-100% - 40px)); transition: transform .3s cubic-bezier(.2,.8,.2,1);
+      background: #3a2a31; color: #fff; border-radius: 16px; padding: 10px 10px 10px 16px;
+      display: flex; align-items: center; gap: 12px; font-size: .9rem; font-weight: 700;
+      max-width: calc(100vw - 32px); box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .toast.show { transform: translate(-50%, 0); }
+    .toast button { border: none; background: rgba(255,255,255,.16); color: #fff; font-weight: 800; border-radius: 10px; padding: 8px 12px; white-space: nowrap; }
+    .toast:not(:has(button)) { padding-right: 16px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+    @media (max-width: 360px) {
+      .main-btn { width: 168px; height: 168px; }
+      .day .c { width: 32px; height: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div>
+        <div class="eyebrow" id="h-year"></div>
+        <h1 id="h-date"></h1>
+      </div>
+      <button class="icon-btn" id="btn-settings" aria-label="設定">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </header>
+
+    <section class="card status" id="status" aria-live="polite"></section>
+
+    <div class="notices" id="notices"></div>
+
+    <section class="action">
+      <button class="main-btn" id="main-btn"></button>
+    </section>
+
+    <section class="card" id="bleed-card">
+      <div class="row-title">今日の出血 <small>点状出血も記録</small></div>
+      <div class="seg" id="bleed-seg" role="group" aria-label="今日の出血"></div>
+      <p class="hint" id="bleed-hint"></p>
+    </section>
+
+    <section class="card">
+      <div class="cal-head">
+        <div class="m" id="cal-month"></div>
+        <div class="cal-nav">
+          <button class="today-btn" id="cal-today" hidden>今日</button>
+          <button class="nav-btn" id="cal-prev" aria-label="前の月"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="nav-btn" id="cal-next" aria-label="次の月"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="legend">
+        <span><i class="lg ok"></i>服用</span>
+        <span><i class="lg miss"></i>記録なし</span>
+        <span><i class="lg brk"></i>休薬</span>
+        <span><i class="lg drop"></i>出血</span>
+        <span><i class="lg start"></i>サイクル開始</span>
+      </div>
+      <p class="note" style="text-align:center">日付をタップすると過去の記録を修正できます</p>
+    </section>
+
+    <section class="card" id="stats"></section>
+
+    <p class="foot">このアプリは記録の補助ツールです。服用方法・休薬・飲み忘れの対応は、医師・薬剤師の指示と添付文書に従ってください。<br>データはこの端末内にのみ保存されます。</p>
+  </div>
+
+  <div class="backdrop" id="backdrop"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="grip"></div>
+    <div id="sheet-body"></div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <input type="file" id="file-import" accept="application/json,.json" hidden>
+
+  <script>
+  (() => {
+    'use strict';
+
+    // ============ 定数 ============
+    const APP_VERSION = '2.0.0';
+    const KEY = 'yazflex-v2';
+    const BACKUP_KEY = 'yazflex-v2-daily-backup';
+    const BREAK_DAYS = 4;     // 休薬日数
+    const MIN_DAYS = 24;      // 24日目までは出血があっても連続服用
+    const MAX_DAYS = 120;     // 連続服用の上限
+    const BLEED_STREAK = 3;   // 25日目以降の連続出血日数
+    const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+    const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
+    const WD = ['日', '月', '火', '水', '木', '金', '土'];
+    const REASONS = { bleed: '出血3日連続', max: '120日到達', fixed: '28日周期', manual: '手動' };
+
+    // ============ 日付ユーティリティ（すべてローカル日付で計算） ============
+    const pad = n => String(n).padStart(2, '0');
+    const fmt = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const parse = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+    const addDays = (s, n) => { const d = parse(s); d.setDate(d.getDate() + n); return fmt(d); };
+    const diffDays = (a, b) => { // b - a（日）
+      const A = parse(a), B = parse(b);
+      return Math.round((Date.UTC(B.getFullYear(), B.getMonth(), B.getDate()) - Date.UTC(A.getFullYear(), A.getMonth(), A.getDate())) / 864e5);
+    };
+    const today = () => fmt(new Date());
+    const nowTime = () => { const d = new Date(); return `${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+    const md = s => { const d = parse(s); return `${d.getMonth() + 1}/${d.getDate()}(${WD[d.getDay()]})`; };
+    const ymd = s => { const d = parse(s); return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`; };
+    const longDate = s => { const d = parse(s); return `${d.getMonth() + 1}月${d.getDate()}日 (${WD[d.getDay()]})`; };
+
+    // ============ 状態 ============
+    const blank = () => ({
+      v: 2,
+      taken: {},     // { 'YYYY-MM-DD': 'HH:MM' | '' }
+      bleed: {},     // { 'YYYY-MM-DD': 1(少量・点状) | 2(あり) }
+      cycles: [],    // [{ start, breakStart|null, reason|null, est }]
+      settings: { mode: 'flex', remindAt: '21:00' },
+      ui: { dismissMiss: null, dismissInstall: false, lastExport: null, backupSnooze: null },
+      since: null    // 記録を始めた日（これより前は「記録なし」扱いにしない）
+    });
+
+    function sanitize(o) {
+      const s = blank();
+      if (!o || typeof o !== 'object') return s;
+      if (o.taken && typeof o.taken === 'object') {
+        for (const [k, v] of Object.entries(o.taken)) if (DATE_RE.test(k)) s.taken[k] = (typeof v === 'string' && TIME_RE.test(v)) ? v : '';
+      }
+      if (o.bleed && typeof o.bleed === 'object') {
+        for (const [k, v] of Object.entries(o.bleed)) if (DATE_RE.test(k) && (v === 1 || v === 2)) s.bleed[k] = v;
+      }
+      if (Array.isArray(o.cycles)) {
+        const seen = new Set();
+        s.cycles = o.cycles
+          .filter(c => c && typeof c.start === 'string' && DATE_RE.test(c.start))
+          .map(c => ({
+            start: c.start,
+            breakStart: (typeof c.breakStart === 'string' && DATE_RE.test(c.breakStart) && c.breakStart > c.start) ? c.breakStart : null,
+            reason: Object.prototype.hasOwnProperty.call(REASONS, c.reason) ? c.reason : null,
+            est: !!c.est
+          }))
+          .sort((a, b) => a.start < b.start ? -1 : a.start > b.start ? 1 : 0)
+          .filter(c => !seen.has(c.start) && seen.add(c.start));
+      }
+      if (o.settings && typeof o.settings === 'object') {
+        if (o.settings.mode === 'flex' || o.settings.mode === 'fixed') s.settings.mode = o.settings.mode;
+        if (typeof o.settings.remindAt === 'string' && (o.settings.remindAt === '' || TIME_RE.test(o.settings.remindAt))) s.settings.remindAt = o.settings.remindAt;
+      }
+      if (o.ui && typeof o.ui === 'object') {
+        for (const k of ['dismissMiss', 'lastExport', 'backupSnooze']) if (typeof o.ui[k] === 'string' && DATE_RE.test(o.ui[k])) s.ui[k] = o.ui[k];
+        s.ui.dismissInstall = !!o.ui.dismissInstall;
+      }
+      if (typeof o.since === 'string' && DATE_RE.test(o.since)) s.since = o.since;
+      else { // 旧データ：最初の記録日を開始日とみなす
+        const ds = Object.keys(s.taken).concat(s.cycles.map(c => c.start)).sort();
+        s.since = ds[0] || null;
+      }
+      return s;
+    }
+
+    // 旧バージョン（pillTakenDates など）からの引き継ぎ。旧キーは消さずに残す。
+    function migrateOld() {
+      try {
+        const td = JSON.parse(localStorage.getItem('pillTakenDates') || 'null');
+        const tt = JSON.parse(localStorage.getItem('pillTakenTimes') || 'null') || {};
+        const bd = JSON.parse(localStorage.getItem('bleedingDates') || 'null');
+        const cs = localStorage.getItem('cycleStartDate');
+        const s = blank();
+        let found = false;
+        if (Array.isArray(td)) { td.forEach(d => { if (DATE_RE.test(d)) { s.taken[d] = TIME_RE.test(tt[d] || '') ? tt[d] : ''; found = true; } }); }
+        if (Array.isArray(bd)) { bd.forEach(d => { if (DATE_RE.test(d)) { s.bleed[d] = 2; found = true; } }); }
+        if (cs && DATE_RE.test(cs)) { s.cycles = [{ start: cs, breakStart: null, reason: null, est: false }]; found = true; }
+        return found ? sanitize(s) : null;
+      } catch (e) { return null; }
+    }
+
+    let migrated = false;
+    function load() {
+      try {
+        const raw = localStorage.getItem(KEY);
+        if (raw) return sanitize(JSON.parse(raw));
+      } catch (e) { /* 壊れたデータ → 移行 or 新規 */ }
+      const m = migrateOld();
+      if (m) { migrated = true; return m; }
+      return blank();
+    }
+
+    function save() {
+      try {
+        // 1日1回、上書き前の状態を退避（「前日の状態に戻す」用）
+        const t = today();
+        const meta = JSON.parse(localStorage.getItem(BACKUP_KEY) || 'null');
+        if (!meta || meta.date !== t) {
+          const cur = localStorage.getItem(KEY);
+          if (cur) localStorage.setItem(BACKUP_KEY, JSON.stringify({ date: t, data: cur }));
+        }
+      } catch (e) { /* 退避失敗は無視 */ }
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+        return true;
+      } catch (e) {
+        toast('保存できませんでした。空き容量やプライベートモードを確認してください');
+        return false;
+      }
+    }
+
+    const snapshot = () => JSON.parse(JSON.stringify(state));
+    function restore(snap) { state = snap; save(); render(); }
+
+    let state = load();
+    if (migrated) save();
+
+    // ============ サイクル計算 ============
+    const lastCycle = () => state.cycles[state.cycles.length - 1] || null;
+
+    // 休薬が終わったら自動で次のサイクルを開始。28日周期モードは24日服用後に自動で休薬。
+    function normalize() {
+      const t = today();
+      let changed = false;
+      for (let guard = 0; guard < 500; guard++) {
+        const c = lastCycle();
+        if (!c) break;
+        if (state.settings.mode === 'fixed' && !c.breakStart) {
+          c.breakStart = addDays(c.start, MIN_DAYS); c.reason = 'fixed'; changed = true;
+        }
+        if (c.breakStart) {
+          const resume = addDays(c.breakStart, BREAK_DAYS);
+          if (resume <= t) { state.cycles.push({ start: resume, breakStart: null, reason: null, est: false }); changed = true; continue; }
+        }
+        break;
+      }
+      if (changed) save();
+    }
+
+    function cycleOf(date) {
+      let c = null;
+      for (const x of state.cycles) { if (x.start <= date) c = x; else break; }
+      return c;
+    }
+
+    function phaseOn(date) {
+      const c = cycleOf(date);
+      if (!c) return { type: 'none' };
+      if (c.breakStart && date >= c.breakStart) {
+        const bd = diffDays(c.breakStart, date) + 1;
+        return bd <= BREAK_DAYS ? { type: 'break', day: bd, cycle: c } : { type: 'none' };
+      }
+      return { type: 'active', day: diffDays(c.start, date) + 1, cycle: c };
+    }
+
+    // 25日目以降の連続出血日数（今日、未記録なら昨日まで）
+    function bleedStreak(cycle) {
+      const t = today();
+      let d = state.bleed[t] ? t : addDays(t, -1);
+      let n = 0;
+      for (let i = 0; i < 60; i++) {
+        const p = phaseOn(d);
+        if (!state.bleed[d] || p.type !== 'active' || p.cycle !== cycle || p.day <= MIN_DAYS) break;
+        n++; d = addDays(d, -1);
+      }
+      return n;
+    }
+
+    // ============ DOM ============
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const ICON = {
+      pill: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a7 7 0 0 1-9.9-9.9l8-8a7 7 0 0 1 9.9 9.9z"/><path d="M8.5 8.5l7 7"/></svg>',
+      check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
+      moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+      start: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>'
+    };
+
+    let viewMonth = (() => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), 1); })();
+    let lastRenderDay = today();
+
+    function render() {
+      const t = today();
+      if (t !== lastRenderDay) { // 日付が変わった（アプリを開いたまま0時を越えた等）
+        lastRenderDay = t;
+        const d = new Date(); viewMonth = new Date(d.getFullYear(), d.getMonth(), 1);
+      }
+      normalize();
+      renderHeader(); renderStatus(); renderNotices(); renderMain(); renderBleed(); renderCalendar(); renderStats();
+    }
+
+    function renderHeader() {
+      const d = new Date();
+      $('h-year').textContent = `${d.getFullYear()}年`;
+      $('h-date').textContent = longDate(today());
+    }
+
+    function renderStatus() {
+      const t = today(), p = phaseOn(t), el = $('status');
+      el.classList.toggle('is-break', p.type === 'break');
+      if (p.type === 'none') {
+        el.innerHTML = `<div class="welcome"><h2>はじめましょう</h2><p>今の服用状況（連続服用の何日目か）を入力すると、休薬のタイミングを自動で計算します。</p><button class="btn primary block" data-act="setup">設定する</button></div>`;
+        return;
+      }
+      if (p.type === 'break') {
+        const resume = addDays(p.cycle.breakStart, BREAK_DAYS);
+        el.innerHTML = `
+          <div class="st-label"><span class="dot"></span>休薬期間</div>
+          <div class="st-big"><span class="num">${p.day}</span><span class="unit">/ ${BREAK_DAYS}日目</span></div>
+          <div class="segs4">${Array.from({ length: BREAK_DAYS }, (_, i) => `<i class="${i < p.day ? 'on' : ''}"></i>`).join('')}</div>
+          <div class="st-meta"><b>${md(resume)}</b> から服用を再開（出血の有無にかかわらず）</div>
+          ${state.settings.mode === 'flex' ? '<button class="link-btn" data-act="cancel-break">休薬を取り消す</button>' : ''}`;
+        return;
+      }
+      const c = p.cycle, fixed = state.settings.mode === 'fixed';
+      const limit = fixed ? MIN_DAYS : MAX_DAYS;
+      const pct = Math.min(100, p.day / limit * 100);
+      const tone = fixed ? '' : p.day >= MAX_DAYS ? 'danger' : p.day >= MAX_DAYS - 10 ? 'warn' : '';
+      const scheduled = c.breakStart && c.breakStart > t;
+      let meta;
+      if (fixed) {
+        const left = c.breakStart ? diffDays(t, c.breakStart) : MIN_DAYS - p.day + 1;
+        meta = `開始 ${md(c.start)} ・ ${left <= 1 ? '<b>明日から休薬</b>' : `休薬まで あと<b>${left}</b>日`}`;
+      } else if (p.day <= MIN_DAYS) {
+        meta = `開始 ${md(c.start)} ・ 24日目までは出血があっても継続`;
+      } else {
+        meta = `開始 ${md(c.start)} ・ 上限まで あと<b>${Math.max(0, MAX_DAYS - p.day)}</b>日`;
+      }
+      el.innerHTML = `
+        <div class="st-label"><span class="dot"></span>連続服用中${c.est ? '（開始日は推定）' : ''}</div>
+        <div class="st-big"><span class="num">${p.day}</span><span class="unit">日目</span></div>
+        <div class="bar">
+          <div class="fill ${tone}" style="width:${pct}%"></div>
+          ${fixed ? '' : `<div class="tick" style="left:${MIN_DAYS / MAX_DAYS * 100}%"><span>24</span></div>`}
+        </div>
+        <div class="bar-labels"><span>1</span><span>${fixed ? '24日で休薬' : '上限 120'}</span></div>
+        <div class="st-meta">${meta}</div>
+        ${scheduled ? `<div class="chip">${ICON.moon.replace('<svg', '<svg width="14" height="14"')} ${md(c.breakStart)}〜${md(addDays(c.breakStart, BREAK_DAYS - 1))} 休薬予定</div>
+          ${fixed ? '' : '<div><button class="link-btn" data-act="cancel-break">休薬予定を取り消す</button></div>'}` : ''}`;
+    }
+
+    function buildNotices() {
+      const t = today(), p = phaseOn(t), list = [];
+      const flex = state.settings.mode === 'flex';
+      const hasData = state.cycles.length > 0;
+
+      if (p.type === 'active') {
+        const c = p.cycle, scheduled = c.breakStart && c.breakStart > t;
+        if (flex && !scheduled) {
+          if (p.day > MAX_DAYS) {
+            list.push({ tone: 'danger', title: `連続服用が上限の${MAX_DAYS}日を超えています`, body: '休薬期間を設定してください。日数がずれている場合は設定から修正できます。', actions: [{ label: '休薬を設定', act: 'break', cls: 'primary' }, { label: '日数を修正', act: 'adjust', cls: 'ghost' }] });
+          } else if (p.day === MAX_DAYS) {
+            list.push({ tone: 'danger', title: `今日で連続服用${MAX_DAYS}日目です`, body: '添付文書では、連続服用が120日に達したら4日間休薬するとされています。', actions: [{ label: '休薬を設定', act: 'break', cls: 'primary' }] });
+          } else {
+            const streak = bleedStreak(c);
+            if (streak >= BLEED_STREAK) {
+              list.push({ tone: 'danger', title: '休薬の目安に達しました', body: `25日目以降に出血が${streak}日連続しています。添付文書では、3日連続で出血（点状出血を含む）があった場合は4日間休薬するとされています。`, actions: [{ label: '休薬を設定', act: 'break', cls: 'primary' }] });
+            } else if (streak > 0) {
+              list.push({ tone: 'warn', title: `25日目以降の出血 ${streak}日目`, body: `${BLEED_STREAK}日連続で続いたら、4日間の休薬が目安です。` });
+            } else if (p.day >= MAX_DAYS - 10) {
+              list.push({ tone: 'warn', title: `上限の${MAX_DAYS}日まで あと${MAX_DAYS - p.day}日`, body: `${md(addDays(c.start, MAX_DAYS - 1))} で120日目。翌日 ${md(addDays(c.start, MAX_DAYS))} から4日間休薬です。` });
+            }
+          }
+        }
+        if (state.bleed[t] && p.day <= MIN_DAYS && flex) {
+          list.push({ tone: 'info', title: '24日目までは出血があっても連続服用します', body: '25日目以降の出血から、連続日数をカウントします。' });
+        }
+      }
+
+      // 昨日の記録漏れ
+      const y = addDays(t, -1), py = phaseOn(y);
+      if (py.type === 'active' && !(y in state.taken) && state.ui.dismissMiss !== y && state.since && y >= state.since) {
+        list.push({ tone: 'warn', title: `昨日 ${md(y)} の服用記録がありません`, body: '飲んでいた場合は記録してください。飲み忘れに今気づいた場合、添付文書では「直ちに前日分を服用し、当日分も通常の時刻に服用する」とされています。迷ったら医師・薬剤師へ。', actions: [{ label: '飲んだので記録', act: 'record-yesterday', cls: 'primary' }, { label: '閉じる', act: 'dismiss-miss', cls: 'ghost' }] });
+      }
+
+      // ホーム画面追加のすすめ
+      const standalone = window.navigator.standalone === true || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+      if (!standalone && !state.ui.dismissInstall) {
+        list.push({ tone: 'info', title: 'ホーム画面に追加して使うのがおすすめ', body: 'Safariの共有ボタン →「ホーム画面に追加」。ブラウザのまま使うと、しばらく開かない間に記録が消えることがあります。', actions: [{ label: 'わかった', act: 'dismiss-install', cls: 'ghost' }] });
+      }
+
+      // バックアップのすすめ（記録が2週間分以上あり、30日以上書き出していない）
+      const recs = Object.keys(state.taken).length;
+      const lastEx = state.ui.lastExport, snooze = state.ui.backupSnooze;
+      if (hasData && recs >= 14 && (!lastEx || diffDays(lastEx, t) >= 30) && (!snooze || diffDays(snooze, t) >= 14)) {
+        list.push({ tone: 'info', title: 'バックアップを保存しませんか', body: '機種変更や不具合に備えて、記録をファイルに書き出せます（ファイルAppやiCloud Driveに保存）。', actions: [{ label: '書き出す', act: 'export', cls: 'primary' }, { label: 'あとで', act: 'snooze-backup', cls: 'ghost' }] });
+      }
+      return list;
+    }
+
+    function renderNotices() {
+      $('notices').innerHTML = buildNotices().map(n => `
+        <div class="notice ${n.tone}">
+          <div class="n-title">${n.title}</div>
+          ${n.body ? `<div class="n-body">${n.body}</div>` : ''}
+          ${n.actions ? `<div class="n-actions">${n.actions.map(a => `<button class="btn sm ${a.cls || ''}" data-act="${a.act}">${a.label}</button>`).join('')}</div>` : ''}
+        </div>`).join('');
+    }
+
+    function isDue() {
+      const t = today(), r = state.settings.remindAt;
+      return !!r && phaseOn(t).type === 'active' && !(t in state.taken) && nowTime() >= r;
+    }
+
+    function renderMain() {
+      const t = today(), p = phaseOn(t), btn = $('main-btn');
+      btn.className = 'main-btn';
+      if (p.type === 'none') {
+        btn.innerHTML = `${ICON.start}<span class="mb-label">はじめる</span><span class="mb-sub">服用状況を設定</span>`;
+        btn.setAttribute('aria-label', 'はじめる');
+      } else if (t in state.taken) {
+        btn.classList.add('taken');
+        const tm = state.taken[t];
+        btn.innerHTML = `${ICON.check}<span class="mb-label">服用済み</span><span class="mb-sub">${tm ? tm + ' ・ ' : ''}タップで修正</span>`;
+        btn.setAttribute('aria-label', `服用済み ${tm}。タップで修正`);
+      } else if (p.type === 'break') {
+        btn.classList.add('break');
+        btn.innerHTML = `${ICON.moon}<span class="mb-label">休薬中</span><span class="mb-sub">今日は飲みません</span>`;
+        btn.setAttribute('aria-label', '休薬中。タップで記録を開く');
+      } else {
+        const due = isDue();
+        if (due) btn.classList.add('due');
+        btn.innerHTML = `${ICON.pill}<span class="mb-label">飲む</span><span class="mb-sub">${due ? `予定 ${state.settings.remindAt} を過ぎています` : 'タップで記録'}</span>`;
+        btn.setAttribute('aria-label', '飲んだことを記録');
+      }
+    }
+
+    const BLEED_OPTS = [{ v: 0, label: 'なし', tone: '' }, { v: 1, label: '少量・点状', tone: 'spot' }, { v: 2, label: 'あり', tone: 'bleed' }];
+    const segHTML = (val, attr) => BLEED_OPTS.map(o => `<button type="button" ${attr}="${o.v}" data-tone="${o.tone}" aria-pressed="${val === o.v}">${o.label}</button>`).join('');
+
+    function renderBleed() {
+      const t = today(), p = phaseOn(t);
+      $('bleed-card').hidden = p.type === 'none';
+      $('bleed-seg').innerHTML = segHTML(state.bleed[t] || 0, 'data-bleed');
+      $('bleed-hint').textContent = p.type === 'break' ? '休薬中の出血も記録しておくと、診察時の参考になります。' : '';
+    }
+
+    function renderCalendar() {
+      const t = today(), y = viewMonth.getFullYear(), m = viewMonth.getMonth();
+      $('cal-month').textContent = `${y}年 ${m + 1}月`;
+      const cur = new Date();
+      $('cal-today').hidden = (y === cur.getFullYear() && m === cur.getMonth());
+      let html = WD.map((w, i) => `<div class="wd ${i === 0 ? 'sun' : i === 6 ? 'sat' : ''}">${w}</div>`).join('');
+      const first = new Date(y, m, 1).getDay(), dim = new Date(y, m + 1, 0).getDate();
+      for (let i = 0; i < first; i++) html += '<div></div>';
+      for (let i = 1; i <= dim; i++) {
+        const ds = `${y}-${pad(m + 1)}-${pad(i)}`, p = phaseOn(ds), cls = ['day'];
+        const future = ds > t;
+        if (future) cls.push('future');
+        if (ds === t) cls.push('today');
+        if (p.type === 'break') cls.push('brk');
+        if (ds in state.taken) cls.push('taken');
+        else if (p.type === 'active' && ds < t && state.since && ds >= state.since) cls.push('missed');
+        if (p.type === 'active' && p.day === 1) cls.push('start');
+        const b = state.bleed[ds];
+        const label = `${m + 1}月${i}日${p.type === 'active' ? ` 連続${p.day}日目` : p.type === 'break' ? ` 休薬${p.day}日目` : ''}${ds in state.taken ? ' 服用済み' : ''}${b ? (b === 2 ? ' 出血あり' : ' 少量出血') : ''}`;
+        html += `<button class="${cls.join(' ')}" ${future ? 'disabled' : `data-day="${ds}"`} aria-label="${label}"><span class="c">${i}</span>${b ? `<i class="drop b${b}"></i>` : ''}</button>`;
+      }
+      $('cal-grid').innerHTML = html;
+    }
+
+    function cycleStats(c, until) {
+      const end = c.breakStart && addDays(c.breakStart, -1) < until ? addDays(c.breakStart, -1) : until;
+      let days = 0, taken = 0, bleed = 0, mins = [];
+      const from = state.since && state.since > c.start ? state.since : c.start; // 記録開始前の日は数えない
+      for (let d = from; d <= end; d = addDays(d, 1)) {
+        days++;
+        if (d in state.taken) { taken++; const tm = state.taken[d]; if (tm) { const [h, mi] = tm.split(':').map(Number); mins.push(h * 60 + mi); } }
+        if (state.bleed[d]) bleed++;
+      }
+      let avg = '—';
+      if (mins.length) { const a = Math.round(mins.reduce((x, y) => x + y, 0) / mins.length); avg = `${pad(Math.floor(a / 60))}:${pad(a % 60)}`; }
+      return { days, taken, bleed, avg };
+    }
+
+    function renderStats() {
+      const t = today(), p = phaseOn(t), el = $('stats');
+      if (!state.cycles.length) { el.innerHTML = '<div class="sec-title" style="margin-top:0">記録</div><div class="empty">まだ記録がありません</div>'; return; }
+      const cur = p.type !== 'none' ? p.cycle : lastCycle();
+      const s = cycleStats(cur, t);
+      const rate = s.days ? Math.round(s.taken / s.days * 100) : 0;
+      const past = state.cycles.filter(c => c.breakStart && c.breakStart <= t).slice().reverse();
+      const items = [];
+      if (p.type === 'active') items.push(`<li><div class="range">${ymd(cur.start)} 〜 進行中<small>${cur.est ? '開始日は推定' : ''}</small></div><div class="len">${p.day}日<br><span class="tag now">服用中</span></div></li>`);
+      past.forEach(c => {
+        const len = diffDays(c.start, c.breakStart);
+        items.push(`<li><div class="range">${ymd(c.start)} 〜 ${md(addDays(c.breakStart, -1))}<small>休薬 ${md(c.breakStart)}〜${md(addDays(c.breakStart, BREAK_DAYS - 1))}${c.est ? ' ・ 開始日は推定' : ''}</small></div><div class="len">${c.est ? '—' : len + '日'}<br><span class="tag ${c.reason || ''}">${REASONS[c.reason] || '休薬'}</span></div></li>`);
+      });
+      el.innerHTML = `
+        <div class="sec-title" style="margin-top:0">今のサイクル</div>
+        <div class="stats-grid">
+          <div class="stat"><b>${s.taken}<small style="font-size:.7em;color:var(--sub)">/${s.days}</small></b><span>服用 (${rate}%)</span></div>
+          <div class="stat"><b>${s.avg}</b><span>平均服用時刻</span></div>
+          <div class="stat"><b>${s.bleed}日</b><span>出血の記録</span></div>
+        </div>
+        <div class="sec-title">サイクル履歴</div>
+        <ul class="hist">${items.join('') || '<li class="empty">まだありません</li>'}</ul>
+        <div style="margin-top:12px"><button class="btn ghost block" data-act="copy-summary">診察用メモをコピー</button></div>`;
+    }
+
+    // ============ ボトムシート ============
+    let sheetOnClose = null;
+    function openSheet(html, onMount, onClose) {
+      $('sheet-body').innerHTML = html;
+      $('sheet').classList.add('show'); $('backdrop').classList.add('show');
+      $('sheet').setAttribute('aria-hidden', 'false');
+      document.body.classList.add('locked');
+      $('sheet').scrollTop = 0;
+      sheetOnClose = onClose || null;
+      if (onMount) onMount($('sheet-body'));
+    }
+    function closeSheet() {
+      $('sheet').classList.remove('show'); $('backdrop').classList.remove('show');
+      $('sheet').setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('locked');
+      const cb = sheetOnClose; sheetOnClose = null;
+      if (cb) cb();
+    }
+    $('backdrop').addEventListener('click', closeSheet);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('sheet').classList.contains('show')) closeSheet(); });
+
+    function confirmSheet({ title, body, ok, danger, onOk }) {
+      openSheet(`
+        <h2>${title}</h2>
+        ${body ? `<p class="txt">${body}</p>` : ''}
+        <div class="sheet-actions">
+          <button class="btn block ${danger ? 'danger-solid' : 'primary'}" id="cf-ok">${ok}</button>
+          <button class="btn block ghost" id="cf-cancel">やめる</button>
+        </div>`, b => {
+        b.querySelector('#cf-ok').onclick = () => { closeSheet(); onOk(); };
+        b.querySelector('#cf-cancel').onclick = closeSheet;
+      });
+    }
+
+    // ---- 日付の記録シート ----
+    function openDaySheet(d) {
+      const draw = b => {
+        const p = phaseOn(d), tk = d in state.taken, bl = state.bleed[d] || 0;
+        const ph = p.type === 'active' ? `連続服用 ${p.day}日目` : p.type === 'break' ? `休薬 ${p.day}日目 / ${BREAK_DAYS}` : 'サイクル外';
+        b.innerHTML = `
+          <h2>${longDate(d)}</h2>
+          <p class="sub">${ph}${d === today() ? ' ・ 今日' : ''}</p>
+          <div class="field">
+            <div class="field-label">服用</div>
+            ${tk ? `
+              <div class="field-row">
+                <input class="input" type="time" id="ds-time" value="${state.taken[d]}" aria-label="服用時刻">
+                <button class="btn danger" data-ds="untake">記録を削除</button>
+              </div>
+              <p class="note">時刻をタップすると修正できます</p>`
+            : `<button class="btn primary block" data-ds="take">${p.type === 'break' ? '服用したことを記録（休薬中）' : '服用したことを記録'}</button>`}
+          </div>
+          <div class="field">
+            <div class="field-label">出血</div>
+            <div class="seg">${segHTML(bl, 'data-dsb')}</div>
+          </div>
+          <div class="sheet-actions"><button class="btn block ghost" data-ds="close">閉じる</button></div>`;
+        const ti = b.querySelector('#ds-time');
+        if (ti) ti.addEventListener('change', () => {
+          if (ti.value === '' || TIME_RE.test(ti.value)) { state.taken[d] = ti.value; save(); render(); }
+        });
+      };
+      openSheet('', b => {
+        draw(b);
+        b.onclick = e => {
+          const a = e.target.closest('[data-ds],[data-dsb]');
+          if (!a) return;
+          if (a.dataset.ds === 'close') return closeSheet();
+          const snap = snapshot();
+          if (a.dataset.ds === 'take') {
+            state.taken[d] = d === today() ? nowTime() : (state.settings.remindAt || '');
+            save(); render(); draw(b);
+            toast(`${md(d)} を服用済みにしました`, () => { restore(snap); draw(b); });
+          } else if (a.dataset.ds === 'untake') {
+            delete state.taken[d];
+            save(); render(); draw(b);
+            toast(`${md(d)} の服用記録を削除しました`, () => { restore(snap); draw(b); });
+          } else if (a.dataset.dsb !== undefined) {
+            setBleed(d, Number(a.dataset.dsb)); draw(b);
+          }
+        };
+      }, () => { $('sheet-body').onclick = null; });
+    }
+
+    function setBleed(d, v) {
+      if (v === 0) delete state.bleed[d]; else state.bleed[d] = v;
+      save(); render();
+    }
+
+    // ---- 休薬の設定 ----
+    function openBreakSheet() {
+      const t = today(), p = phaseOn(t);
+      if (p.type !== 'active') return;
+      const c = p.cycle, streak = bleedStreak(c);
+      const reason = streak >= BLEED_STREAK ? 'bleed' : p.day >= MAX_DAYS ? 'max' : 'manual';
+      const opts = [t, addDays(t, 1)].filter(d => d > c.start);
+      if (!opts.length) return toast('サイクル開始日より後の日付を選んでください');
+      let sel = (t in state.taken && opts.includes(addDays(t, 1))) ? addDays(t, 1) : opts[0];
+      const draw = b => {
+        b.innerHTML = `
+          <h2>休薬を設定</h2>
+          <p class="sub">${reason === 'bleed' ? '25日目以降の出血が3日連続' : reason === 'max' ? '連続服用が上限に到達' : '手動で休薬を設定'}</p>
+          <div class="field">
+            <div class="field-label">休薬を始める日</div>
+            <div class="choice">
+              ${opts.map(d => `<button type="button" data-bs="${d}" aria-pressed="${d === sel}">
+                <b>${d === t ? '今日' : '明日'}から（${md(d)}）</b>
+                <span>休薬 ${md(d)}〜${md(addDays(d, BREAK_DAYS - 1))} ・ ${md(addDays(d, BREAK_DAYS))} から服用再開</span>
+              </button>`).join('')}
+            </div>
+            <p class="note">${t in state.taken ? '今日の分はもう飲んでいるので、通常は「明日から」です。' : '今日の分をまだ飲んでいない場合は「今日から」を選びます。'}</p>
+          </div>
+          <div class="sheet-actions">
+            <button class="btn block brk" id="bk-ok">休薬を設定する</button>
+            <button class="btn block ghost" id="bk-cancel">やめる</button>
+          </div>`;
+      };
+      openSheet('', b => {
+        draw(b);
+        b.onclick = e => {
+          const o = e.target.closest('[data-bs]');
+          if (o) { sel = o.dataset.bs; draw(b); return; }
+          if (e.target.closest('#bk-cancel')) return closeSheet();
+          if (e.target.closest('#bk-ok')) {
+            const snap = snapshot();
+            c.breakStart = sel; c.reason = reason;
+            save(); closeSheet(); render();
+            toast(`${md(sel)} から4日間の休薬を設定しました`, () => restore(snap));
+          }
+        };
+      }, () => { $('sheet-body').onclick = null; });
+    }
+
+    function cancelBreak() {
+      const c = lastCycle();
+      if (!c || !c.breakStart) return;
+      confirmSheet({
+        title: '休薬を取り消しますか？', body: '連続服用を続けている扱いに戻します。', ok: '取り消す',
+        onOk: () => { const snap = snapshot(); c.breakStart = null; c.reason = null; save(); render(); toast('休薬を取り消しました', () => restore(snap)); }
+      });
+    }
+
+    // ---- 初期設定 / 日数の修正 ----
+    function openCycleSheet() {
+      const t = today(), p = phaseOn(t), first = !state.cycles.length;
+      let kind = p.type === 'break' ? 'break' : 'active';
+      let n = p.type === 'active' ? p.day : p.type === 'break' ? p.day : 1;
+      let mode = state.settings.mode;
+      const draw = b => {
+        const maxN = kind === 'break' ? BREAK_DAYS : 365;
+        n = Math.min(Math.max(1, n || 1), maxN);
+        const startDate = addDays(t, -(n - 1));
+        const hint = kind === 'active'
+          ? `連続服用の開始日は <b>${md(startDate)}</b> になります`
+          : `休薬開始日は <b>${md(startDate)}</b>、<b>${md(addDays(startDate, BREAK_DAYS))}</b> から服用再開`;
+        b.innerHTML = `
+          <h2>${first ? 'はじめに' : '日数・状態の修正'}</h2>
+          <p class="sub">${first ? '今の服用状況を教えてください' : 'ずれている場合に修正します。過去の服用記録は消えません'}</p>
+          ${first ? `<div class="field">
+            <div class="field-label">服用方法（医師の指示に合わせて）</div>
+            <div class="seg"><button type="button" data-mode="flex" aria-pressed="${mode === 'flex'}">最長120日連続</button><button type="button" data-mode="fixed" aria-pressed="${mode === 'fixed'}">28日周期</button></div>
+            <p class="note">${mode === 'flex' ? '25日目以降に3日連続で出血、または120日に達したら4日間休薬します。' : '24日間服用して4日間休薬、を繰り返します。'}</p>
+          </div>` : ''}
+          <div class="field">
+            <div class="field-label">今日の状態</div>
+            <div class="seg"><button type="button" data-kind="active" aria-pressed="${kind === 'active'}">服用中</button><button type="button" data-kind="break" aria-pressed="${kind === 'break'}">休薬中</button></div>
+          </div>
+          <div class="field">
+            <div class="field-label">今日は${kind === 'active' ? '連続服用' : '休薬'}の何日目？</div>
+            <div class="stepper">
+              <button type="button" class="nav-btn" data-step="-1" aria-label="1日減らす">−</button>
+              <input class="input" id="cs-n" type="number" inputmode="numeric" min="1" max="${maxN}" value="${n}" aria-label="日数">
+              <button type="button" class="nav-btn" data-step="1" aria-label="1日増やす">＋</button>
+              <span class="u">日目</span>
+            </div>
+            <p class="note">${hint}</p>
+          </div>
+          <div class="sheet-actions">
+            <button class="btn block primary" id="cs-ok">${first ? 'はじめる' : '保存する'}</button>
+            <button class="btn block ghost" id="cs-cancel">やめる</button>
+          </div>`;
+        const inp = b.querySelector('#cs-n');
+        inp.addEventListener('change', () => { n = parseInt(inp.value, 10) || 1; draw(b); });
+      };
+      openSheet('', b => {
+        draw(b);
+        b.onclick = e => {
+          const el = e.target.closest('button');
+          if (!el) return;
+          if (el.dataset.mode) { mode = el.dataset.mode; draw(b); }
+          else if (el.dataset.kind) { kind = el.dataset.kind; n = kind === 'break' ? 1 : (p.type === 'active' ? p.day : 1); draw(b); }
+          else if (el.dataset.step) { n = (parseInt(b.querySelector('#cs-n').value, 10) || 1) + Number(el.dataset.step); draw(b); }
+          else if (el.id === 'cs-cancel') closeSheet();
+          else if (el.id === 'cs-ok') {
+            n = parseInt(b.querySelector('#cs-n').value, 10) || 1;
+            const snap = snapshot();
+            if (first) { state.settings.mode = mode; state.since = today(); }
+            applyCycle(kind, n);
+            save(); closeSheet(); render();
+            toast(first ? '設定しました' : '修正しました', first ? null : () => restore(snap));
+          }
+        };
+      }, () => { $('sheet-body').onclick = null; });
+    }
+
+    function applyCycle(kind, n) {
+      const t = today();
+      if (kind === 'active') {
+        const ns = addDays(t, -(n - 1));
+        const keep = state.cycles.filter(c => c.start < ns);
+        const lc = keep[keep.length - 1];
+        if (lc && (!lc.breakStart || addDays(lc.breakStart, BREAK_DAYS) > ns)) {
+          lc.breakStart = addDays(ns, -BREAK_DAYS); lc.reason = lc.reason || 'manual';
+          if (lc.breakStart <= lc.start) keep.pop();
+        }
+        state.cycles = [...keep, { start: ns, breakStart: state.settings.mode === 'fixed' ? addDays(ns, MIN_DAYS) : null, reason: state.settings.mode === 'fixed' ? 'fixed' : null, est: false }];
+      } else {
+        const bs = addDays(t, -(Math.min(n, BREAK_DAYS) - 1));
+        const keep = state.cycles.filter(c => c.start < bs);
+        const lc = keep[keep.length - 1];
+        if (lc) { lc.breakStart = bs; lc.reason = lc.reason && lc.reason !== 'fixed' ? lc.reason : (state.settings.mode === 'fixed' ? 'fixed' : 'manual'); state.cycles = keep; }
+        else state.cycles = [{ start: addDays(bs, -MIN_DAYS), breakStart: bs, reason: state.settings.mode === 'fixed' ? 'fixed' : 'manual', est: true }];
+      }
+    }
+
+    function setMode(mode) {
+      if (state.settings.mode === mode) return;
+      const t = today(), c = lastCycle(), p = phaseOn(t);
+      state.settings.mode = mode;
+      if (mode === 'flex' && c && c.reason === 'fixed' && c.breakStart > t) { c.breakStart = null; c.reason = null; }
+      if (mode === 'fixed' && c && p.type === 'active' && !c.breakStart) {
+        let bs = addDays(c.start, MIN_DAYS);
+        if (bs <= t) bs = addDays(t, 1); // すでに24日を過ぎている場合は明日から休薬
+        c.breakStart = bs; c.reason = 'fixed';
+      }
+      save(); render();
+    }
+
+    // ---- 設定 ----
+    function openSettings() {
+      let hasBackup = false, backupDate = '';
+      try { const m = JSON.parse(localStorage.getItem(BACKUP_KEY) || 'null'); if (m && m.data && DATE_RE.test(m.date)) { hasBackup = true; backupDate = m.date; } } catch (e) {}
+      const draw = b => {
+        const s = state.settings;
+        b.innerHTML = `
+          <h2>設定</h2>
+          <div class="field">
+            <div class="field-label">服用方法（医師の指示に合わせて）</div>
+            <div class="seg"><button type="button" data-mode="flex" aria-pressed="${s.mode === 'flex'}">最長120日連続</button><button type="button" data-mode="fixed" aria-pressed="${s.mode === 'fixed'}">28日周期</button></div>
+            <p class="note">${s.mode === 'flex' ? '24日目までは出血があっても服用。25日目以降に3日連続で出血、または120日に達したら4日間休薬。' : '24日間服用 → 4日間休薬 を自動で繰り返します。'}</p>
+          </div>
+          <div class="field">
+            <div class="field-label">いつも飲む時刻</div>
+            <div class="field-row"><input class="input" type="time" id="st-time" value="${s.remindAt}" aria-label="服用予定時刻"></div>
+            <p class="note">この時刻を過ぎても未記録だと、ボタンでお知らせします。</p>
+            <div class="list" style="margin-top:10px">
+              <button class="btn" data-set="ics">iPhoneのカレンダーに毎日の通知を追加 <small>›</small></button>
+            </div>
+            <p class="note">Webアプリはアプリを閉じていると通知を出せないため、カレンダーの通知（毎日・指定時刻）で補います。Safariで開いて追加してください。休薬中も通知されます。</p>
+          </div>
+          <div class="field">
+            <div class="field-label">サイクル</div>
+            <div class="list">
+              <button class="btn" data-set="adjust">日数・状態を修正 <small>›</small></button>
+              <button class="btn" data-set="copy">診察用メモをコピー <small>›</small></button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label">バックアップ${state.ui.lastExport ? `（最終 ${ymd(state.ui.lastExport)}）` : ''}</div>
+            <div class="list">
+              <button class="btn" data-set="export">ファイルに書き出す <small>›</small></button>
+              <button class="btn" data-set="import">ファイルから復元 <small>›</small></button>
+              ${hasBackup ? `<button class="btn" data-set="rollback">${md(backupDate)} 朝の状態に戻す <small>›</small></button>` : ''}
+            </div>
+          </div>
+          <div class="field">
+            <div class="list"><button class="btn danger" data-set="wipe">すべての記録を削除</button></div>
+          </div>
+          <p class="note" style="margin-top:18px">バージョン ${APP_VERSION} ・ データはこの端末のブラウザ内にのみ保存され、外部には送信されません。</p>
+          <div class="sheet-actions"><button class="btn block ghost" data-set="close">閉じる</button></div>`;
+        b.querySelector('#st-time').addEventListener('change', e => {
+          const v = e.target.value;
+          if (v === '' || TIME_RE.test(v)) { state.settings.remindAt = v; save(); render(); }
+        });
+      };
+      openSheet('', b => {
+        draw(b);
+        b.onclick = e => {
+          const el = e.target.closest('button');
+          if (!el) return;
+          if (el.dataset.mode) { setMode(el.dataset.mode); draw(b); return; }
+          const a = el.dataset.set;
+          if (a === 'close') closeSheet();
+          else if (a === 'ics') downloadICS();
+          else if (a === 'adjust') { closeSheet(); setTimeout(openCycleSheet, 320); }
+          else if (a === 'copy') copySummary();
+          else if (a === 'export') exportData();
+          else if (a === 'import') $('file-import').click();
+          else if (a === 'rollback') rollback();
+          else if (a === 'wipe') { closeSheet(); setTimeout(wipe, 320); }
+        };
+      }, () => { $('sheet-body').onclick = null; });
+    }
+
+    // ============ ファイル入出力 ============
+    async function shareOrDownload(content, name, type, preferShare) {
+      const blob = new Blob([content], { type });
+      if (preferShare) {
+        try {
+          const f = new File([blob], name, { type });
+          if (navigator.canShare && navigator.canShare({ files: [f] })) { await navigator.share({ files: [f], title: name }); return true; }
+        } catch (e) { if (e && e.name === 'AbortError') return false; }
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+      return true;
+    }
+
+    async function exportData() {
+      const t = today();
+      const payload = JSON.stringify({ app: 'pill-log', version: 2, exportedAt: new Date().toISOString(), data: state }, null, 2);
+      const ok = await shareOrDownload(payload, `pill-log-${t.replace(/-/g, '')}.json`, 'application/json', true);
+      if (ok) { state.ui.lastExport = t; save(); render(); toast('バックアップを書き出しました'); }
+    }
+
+    $('file-import').addEventListener('change', async e => {
+      const f = e.target.files && e.target.files[0];
+      e.target.value = '';
+      if (!f) return;
+      try {
+        const obj = JSON.parse(await f.text());
+        const data = obj && obj.app === 'pill-log' ? obj.data : obj;
+        const s = sanitize(data);
+        const nTaken = Object.keys(s.taken).length;
+        if (!s.cycles.length && !nTaken) throw new Error('empty');
+        closeSheet();
+        setTimeout(() => confirmSheet({
+          title: 'バックアップから復元',
+          body: `服用記録 ${nTaken}日分・サイクル ${s.cycles.length}件 を読み込みます。今のデータは置き換えられます（直後なら元に戻せます）。`,
+          ok: '復元する',
+          onOk: () => { const snap = snapshot(); state = s; save(); render(); toast('復元しました', () => restore(snap)); }
+        }), 320);
+      } catch (err) { toast('このファイルは読み込めませんでした'); }
+    });
+
+    function rollback() {
+      let m;
+      try { m = JSON.parse(localStorage.getItem(BACKUP_KEY) || 'null'); } catch (e) {}
+      if (!m || !m.data) return toast('戻せるデータがありません');
+      closeSheet();
+      setTimeout(() => confirmSheet({
+        title: `${md(m.date)} 朝の状態に戻しますか？`, body: 'その日に最初に記録する前の状態に戻します。それ以降の変更は失われます。', ok: '戻す',
+        onOk: () => { const snap = snapshot(); try { state = sanitize(JSON.parse(m.data)); } catch (e) { return toast('戻せませんでした'); } save(); render(); toast('戻しました', () => restore(snap)); }
+      }), 320);
+    }
+
+    function wipe() {
+      confirmSheet({
+        title: 'すべての記録を削除しますか？', body: '服用・出血・サイクルの記録がすべて消えます。先にバックアップを書き出すことをおすすめします。', ok: '削除する', danger: true,
+        onOk: () => { const snap = snapshot(); state = blank(); state.ui.dismissInstall = snap.ui.dismissInstall; save(); render(); toast('削除しました', () => restore(snap)); }
+      });
+    }
+
+    function downloadICS() {
+      const tm = state.settings.remindAt || '21:00';
+      const [h, m] = tm.split(':');
+      const start = today().replace(/-/g, '');
+      const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+      const ics = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//pill-log//JA', 'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT', `UID:pill-reminder-${Date.now()}@pill-log`, `DTSTAMP:${stamp}`,
+        `DTSTART:${start}T${h}${m}00`, 'DURATION:PT5M', 'RRULE:FREQ=DAILY',
+        'SUMMARY:ピルを飲む', 'DESCRIPTION:飲んだらアプリで記録',
+        'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:ピルを飲む時間です', 'TRIGGER:PT0M', 'END:VALARM',
+        'END:VEVENT', 'END:VCALENDAR'
+      ].join('\r\n');
+      shareOrDownload(ics, 'pill-reminder.ics', 'text/calendar', false);
+    }
+
+    function summaryText() {
+      const t = today(), p = phaseOn(t), lines = [];
+      lines.push(`ピル服用記録（${ymd(t)} 時点）`);
+      lines.push(`服用方法: ${state.settings.mode === 'flex' ? 'フレキシブル（最長120日）' : '28日周期'}`);
+      if (p.type === 'active') {
+        const s = cycleStats(p.cycle, t);
+        lines.push(`現在: 連続服用 ${p.day}日目（${ymd(p.cycle.start)} 開始）`);
+        lines.push(`今サイクル: 服用 ${s.taken}/${s.days}日、出血の記録 ${s.bleed}日`);
+      } else if (p.type === 'break') {
+        lines.push(`現在: 休薬 ${p.day}日目（${md(addDays(p.cycle.breakStart, BREAK_DAYS))} 再開予定）`);
+      }
+      const past = state.cycles.filter(c => c.breakStart && c.breakStart <= t).slice(-8).reverse();
+      if (past.length) {
+        lines.push('', '過去のサイクル:');
+        past.forEach(c => {
+          const s = cycleStats(c, t);
+          lines.push(`・${ymd(c.start)}〜${md(addDays(c.breakStart, -1))} ${c.est ? '（開始日推定）' : diffDays(c.start, c.breakStart) + '日'} / 休薬理由: ${REASONS[c.reason] || '—'} / 出血 ${s.bleed}日`);
+        });
+      }
+      return lines.join('\n');
+    }
+
+    async function copySummary() {
+      const text = summaryText();
+      try { await navigator.clipboard.writeText(text); toast('診察用メモをコピーしました'); }
+      catch (e) {
+        try { if (navigator.share) { await navigator.share({ text }); return; } } catch (e2) { if (e2 && e2.name === 'AbortError') return; }
+        toast('コピーできませんでした');
+      }
+    }
+
+    // ============ トースト ============
+    let toastTimer = null;
+    function toast(msg, undo) {
+      const el = $('toast');
+      el.innerHTML = `<span>${esc(msg)}</span>${undo ? '<button type="button">元に戻す</button>' : ''}`;
+      if (undo) el.querySelector('button').onclick = () => { hideToast(); undo(); };
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(hideToast, undo ? 6000 : 2600);
+    }
+    function hideToast() { $('toast').classList.remove('show'); }
+
+    // ============ イベント ============
+    $('main-btn').addEventListener('click', () => {
+      const t = today(), p = phaseOn(t);
+      if (p.type === 'none') return openCycleSheet();
+      if (p.type === 'active' && !(t in state.taken)) {
+        const snap = snapshot();
+        state.taken[t] = nowTime();
+        save(); render();
+        if (navigator.vibrate) navigator.vibrate(12);
+        toast(`${state.taken[t]} に服用を記録しました`, () => restore(snap));
+        return;
+      }
+      openDaySheet(t);
+    });
+
+    $('bleed-seg').addEventListener('click', e => {
+      const b = e.target.closest('[data-bleed]');
+      if (!b) return;
+      const snap = snapshot(), v = Number(b.dataset.bleed);
+      if ((state.bleed[today()] || 0) === v) return;
+      setBleed(today(), v);
+      toast(v === 0 ? '出血なしにしました' : v === 1 ? '少量・点状出血を記録しました' : '出血を記録しました', () => restore(snap));
+    });
+
+    $('cal-grid').addEventListener('click', e => {
+      const d = e.target.closest('[data-day]');
+      if (d) openDaySheet(d.dataset.day);
+    });
+    $('cal-prev').addEventListener('click', () => { viewMonth = new Date(viewMonth.getFullYear(), viewMonth.getMonth() - 1, 1); renderCalendar(); });
+    $('cal-next').addEventListener('click', () => { viewMonth = new Date(viewMonth.getFullYear(), viewMonth.getMonth() + 1, 1); renderCalendar(); });
+    $('cal-today').addEventListener('click', () => { const d = new Date(); viewMonth = new Date(d.getFullYear(), d.getMonth(), 1); renderCalendar(); });
+    $('btn-settings').addEventListener('click', openSettings);
+
+    // お知らせ・状態カード内のボタン
+    document.addEventListener('click', e => {
+      const a = e.target.closest('[data-act]');
+      if (!a) return;
+      const act = a.dataset.act, t = today();
+      if (act === 'setup' || act === 'adjust') openCycleSheet();
+      else if (act === 'break') openBreakSheet();
+      else if (act === 'cancel-break') cancelBreak();
+      else if (act === 'record-yesterday') {
+        const y = addDays(t, -1), snap = snapshot();
+        state.taken[y] = state.settings.remindAt || '';
+        save(); render(); toast(`${md(y)} を服用済みにしました`, () => restore(snap));
+      }
+      else if (act === 'dismiss-miss') { state.ui.dismissMiss = addDays(t, -1); save(); render(); }
+      else if (act === 'dismiss-install') { state.ui.dismissInstall = true; save(); render(); }
+      else if (act === 'snooze-backup') { state.ui.backupSnooze = t; save(); render(); }
+      else if (act === 'export') exportData();
+      else if (act === 'copy-summary') copySummary();
+    });
+
+    // 日付の切り替わり・予定時刻の通過に追従
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
+    window.addEventListener('pageshow', render);
+    setInterval(() => { if (!document.hidden) render(); }, 60 * 1000);
+
+    // ストレージの永続化を要求（対応ブラウザのみ）
+    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
+
+    render();
+    if (migrated) toast('以前のデータを引き継ぎました');
+  })();
+  </script>
+</body>
+</html>
